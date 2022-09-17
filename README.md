@@ -1,5 +1,9 @@
 # killCatcher
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/MiroslavRepka/killCatcher)](https://goreportcard.com/report/github.com/MiroslavRepka/killCatcher)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+
 Simple go module for detecting the pod deletion from Kubernetes cluster
 
 # How to use it
