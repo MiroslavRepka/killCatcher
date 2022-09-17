@@ -16,7 +16,7 @@ In this example, we will use `errorGroup`.
 func main(){
     kc := killCatcher.New(postSigterm)
     var eg errgroup.Group
-    eg.Go(killCatcher.Listen())
+    eg.Go(killCatcher.Listen)
     eg.Go(yourApp)
     if err := eg.Wait(); err != nil {
 		fmt.Printf("Got error in one of the goroutines : %v\n", err)
@@ -34,4 +34,4 @@ func yourApp() error {
 }
 ```
 
-Lastly, do not forget to define `terminationGracePeriodSeconds` in you manifest file. Example can be found [here](test/pod.yaml).
+Lastly, do not forget to define `terminationGracePeriodSeconds` in you manifest file. By default, its set to `30s`, however, this might not suit your needs. Example can be found [here](test/pod.yaml).
