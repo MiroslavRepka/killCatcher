@@ -1,0 +1,6 @@
+github.com/MiroslavRepka/killCatcher v0.0.0-20220917103309-9170e31c265b h1:zW20yWl59oGIuCGWxO/aTW1Q2bekOlga5JLP3ItFUx4=
+github.com/MiroslavRepka/killCatcher v0.0.0-20220917103309-9170e31c265b/go.mod h1:44+/a6ff1KZ+X1EX91ePfwlnIBcqq0z38JGj7zSO5cA=
+github.com/MiroslavRepka/killCatcher v0.0.0-20220917105215-e664e220e41b h1:yl+u3nubqnKV3yohN6TF79dLWC5ZuAZBM5P3OswsUjE=
+github.com/MiroslavRepka/killCatcher v0.0.0-20220917105215-e664e220e41b/go.mod h1:44+/a6ff1KZ+X1EX91ePfwlnIBcqq0z38JGj7zSO5cA=
+golang.org/x/sync v0.0.0-20220907140024-f12130a52804 h1:0SH2R3f1b1VmIMG7BXbEZCBUu2dKmHschSmjqGUrW8A=
+golang.org/x/sync v0.0.0-20220907140024-f12130a52804/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
