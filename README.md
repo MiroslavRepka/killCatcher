@@ -34,4 +34,4 @@ func yourApp() error {
 }
 ```
 
-Lastly, do not forget to define `terminationGracePeriodSeconds` in you manifest file. Example can be find [here](test/pod.yaml).
+Lastly, do not forget to define `terminationGracePeriodSeconds` in you manifest file. Example can be found [here](test/pod.yaml).
