@@ -36,16 +36,13 @@ func (k *killCatcher) Listen() error {
 		select {
 		// the SIGTERM received
 		case <-term:
-			fmt.Printf("== Received SIGTERM signal, executing provided function ==\n")
 			// execute postKillFunc function
 			if err := k.postKillFunc(); err != nil {
-				fmt.Printf("== Error while executing function post SIGTERM : %v\n", err)
 				return fmt.Errorf("error while executing function post SIGTERM : %v", err)
 			}
 			return nil
 		// default is used so the execution is not blocked
 		default:
-			fmt.Printf("== DEBUG TICK ==\n")
 			// sleep for sleepTime
 			time.Sleep(sleepTime)
 		}
