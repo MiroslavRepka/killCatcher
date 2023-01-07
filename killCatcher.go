@@ -5,11 +5,6 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
-)
-
-const (
-	sleepTime = 5 * time.Second // interval in which the goroutine will check for SIGTERM
 )
 
 // killCatcher will execute provided function postKillFunc after the SIGTERM is received
@@ -27,19 +22,16 @@ func New(f func() error) *killCatcher {
 func (k *killCatcher) Listen() error {
 	// create channel to listen for SIGTERM
 	term := make(chan os.Signal, 1)
+	// Listen for SIGTERM
 	signal.Notify(term, syscall.SIGTERM)
 	// close channel before exit
 	defer signal.Stop(term)
-	// Listen for SIGTERM
-	for {
-		select {
-		// the SIGTERM received
-		case <-term:
-			// execute postKillFunc function
-			if err := k.postKillFunc(); err != nil {
-				return fmt.Errorf("error while executing function post SIGTERM : %v", err)
-			}
-			return nil
-		}
+	// the SIGTERM received
+	<-term
+	// execute postKillFunc function
+	if err := k.postKillFunc(); err != nil {
+		return fmt.Errorf("error while executing function post SIGTERM : %v", err)
 	}
+	return nil
+
 }
