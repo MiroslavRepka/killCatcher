@@ -25,12 +25,11 @@ func New(f func() error) *killCatcher {
 
 // Listen listens for SIGTERM and executes provided function in killCatcher if received
 func (k *killCatcher) Listen() error {
-	//create channel to listen for SIGTERM
+	// create channel to listen for SIGTERM
 	term := make(chan os.Signal, 1)
 	signal.Notify(term, syscall.SIGTERM)
-	defer func() {
-		signal.Stop(term)
-	}()
+	// close channel before exit
+	defer signal.Stop(term)
 	// Listen for SIGTERM
 	for {
 		select {
@@ -41,10 +40,6 @@ func (k *killCatcher) Listen() error {
 				return fmt.Errorf("error while executing function post SIGTERM : %v", err)
 			}
 			return nil
-		// default is used so the execution is not blocked
-		default:
-			// sleep for sleepTime
-			time.Sleep(sleepTime)
 		}
 	}
 }
