@@ -33,5 +33,4 @@ func (k *killCatcher) Listen() error {
 		return fmt.Errorf("error while executing function post SIGTERM : %v", err)
 	}
 	return nil
-
 }
