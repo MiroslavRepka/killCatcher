@@ -18,15 +18,15 @@ func New(f func() error) *killCatcher {
 	return &killCatcher{postKillFunc: f}
 }
 
-// Listen listens for SIGTERM and executes provided function in killCatcher if received
+// Listen listens for SIGTERM/os.Interrupt and executes provided function in killCatcher if received
 func (k *killCatcher) Listen() error {
-	// create channel to listen for SIGTERM
+	// create channel to listen for SIGTERM/Interrupt
 	term := make(chan os.Signal, 1)
-	// Listen for SIGTERM
-	signal.Notify(term, syscall.SIGTERM)
+	// Listen for signal
+	signal.Notify(term, os.Interrupt, syscall.SIGTERM)
 	// close channel before exit
 	defer signal.Stop(term)
-	// the SIGTERM received
+	// signal received
 	<-term
 	// execute postKillFunc function
 	if err := k.postKillFunc(); err != nil {
